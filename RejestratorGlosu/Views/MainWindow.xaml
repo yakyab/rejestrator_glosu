@@ -1,0 +1,88 @@
+﻿<Window x:Class="RejestratorGlosu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:RejestratorGlosu.Converters"
+        xmlns:local="clr-namespace:RejestratorGlosu"
+        Title="Audio Recorder" Height="500" Width="800" Background="#34495e"
+        ResizeMode="NoResize">
+    <!-- Blokada rozciągania okna -->
+
+    <!-- Zasoby okna, takie jak konwertery i style -->
+    <Window.Resources>
+        <!-- Konwerter do przekształcania punktów w kolekcję punktów dla Polyline -->
+        <converters:PointCollectionConverter x:Key="PointCollectionConverter"/>
+
+        <!-- Styl dla przycisków -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="6,3"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- Zmiana koloru tła przycisku podczas naciśnięcia -->
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2980b9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <!-- Główna siatka okna -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto" MinHeight="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Wykres głośności po lewej stronie -->
+        <Border Grid.Row="0" Grid.Column="0" Margin="10,10,10,10" CornerRadius="5" Padding="10" Background="#2c3e50">
+            <Rectangle Fill="#3498db" Height="{Binding VolumeLevel}" VerticalAlignment="Bottom" Width="30" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Wykres audio po prawej stronie -->
+        <Border Grid.Row="0" Grid.Column="1" Margin="10,10,10,10" CornerRadius="5" Padding="10" Background="#2c3e50">
+            <Viewbox Stretch="Fill" StretchDirection="Both">
+                <Polyline Points="{Binding AudioDataPoints, Converter={StaticResource PointCollectionConverter}}" Stroke="#3498db" StrokeThickness="2"/>
+            </Viewbox>
+        </Border>
+
+        <!-- Przyciski sterujące na dole -->
+        <UniformGrid Rows="1" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Width="710">
+            <Button Content="Record" Command="{Binding StartRecordingCommand}" />
+            <Button Content="Stop" Command="{Binding StopRecordingCommand}" />
+            <Button Content="Play" Command="{Binding PlayCommand}" />
+            <Button Content="Save" Command="{Binding SaveCommand}" />
+            <Button Content="Clear" Command="{Binding ClearCommand}" />
+        </UniformGrid>
+    </Grid>
+</Window>
+
+
+
+
+
+
+
+

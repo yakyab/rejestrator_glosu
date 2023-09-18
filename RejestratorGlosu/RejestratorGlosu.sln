@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RejestratorGlosu", "RejestratorGlosu.csproj", "{9D711E67-D570-494A-A2D6-9A4454B5D587}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D711E67-D570-494A-A2D6-9A4454B5D587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D711E67-D570-494A-A2D6-9A4454B5D587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D711E67-D570-494A-A2D6-9A4454B5D587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D711E67-D570-494A-A2D6-9A4454B5D587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E69CF961-F5D2-45B9-ACC7-B12A61208C2E}
+	EndGlobalSection
+EndGlobal
